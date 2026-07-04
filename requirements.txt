@@ -1,0 +1,17 @@
+# --- Step 1 scope only: schema, DB connection, migrations, synthetic ingestion ---
+# Later steps (rule engine, agent, RAG, dashboard) add their own deps when reached.
+
+# Database
+sqlalchemy==2.0.51          # ORM + Core; 2.0 line has stable async support we may need later
+psycopg2-binary==2.9.10     # Postgres driver. Binary build for dev speed; switch to psycopg2
+                            # (source build) in production per psycopg docs recommendation.
+alembic==1.14.0             # Versioned migrations, pairs with SQLAlchemy models
+
+# Config
+pydantic-settings==2.7.0    # Env-driven config with validation at startup (fail-fast)
+
+# Data handling (ingestion + validation, substep 1.6/1.7)
+pandas==2.2.3               # AMLSim CSV output wrangling before DB insert
+
+# Dev/test
+pytest==8.3.4
