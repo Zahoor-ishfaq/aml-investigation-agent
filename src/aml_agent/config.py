@@ -9,6 +9,8 @@ far cheaper than failing inside a DB call three modules deep.
 Reference: pydantic-settings docs, https://docs.pydantic.dev/latest/concepts/pydantic_settings/
 """
 
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -23,18 +25,25 @@ class Settings(BaseSettings):
     with the individual fields.
     """
 
+    # --- Postgres ---
     postgres_user: str
     postgres_password: str
     postgres_db: str
     postgres_host: str = "localhost"
     postgres_port: int = 5432
 
-    # Tells pydantic-settings where to load values from and how to match
-    # env var names to fields (case-insensitive by default).
+    # --- AMLSim ---
+    # Path type gives startup validation: pydantic converts the string to a Path
+    # object and downstream code can .exists() / .iterdir() without re-parsing.
+    # We deliberately do NOT verify the directory exists here — that would
+    # couple config load to filesystem state and fail in test environments
+    # where AMLSim isn't installed. Ingestion script checks existence.
+    amlsim_output_dir: Path
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        extra="ignore",  # ignore unrelated env vars instead of raising
+        extra="ignore",
     )
 
     @property
