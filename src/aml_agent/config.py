@@ -31,7 +31,12 @@ class Settings(BaseSettings):
     postgres_db: str
     postgres_host: str = "localhost"
     postgres_port: int = 5432
-
+    
+    # --- Groq ---
+    groq_api_key: str
+    groq_model_name: str = "llama-3.3-70b-versatile"
+    groq_temperature: float = 0.1
+    groq_max_tokens: int = 2048
     # --- AMLSim ---
     # Path type gives startup validation: pydantic converts the string to a Path
     # object and downstream code can .exists() / .iterdir() without re-parsing.
