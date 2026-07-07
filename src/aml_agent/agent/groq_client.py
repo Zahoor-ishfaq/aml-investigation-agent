@@ -1,20 +1,28 @@
 """
-Groq API client wrapper.
+Groq API client wrapper with multi-key rotation.
 
 Thin wrapper around the official groq SDK. Centralises model name,
-sampling params, and one-time retry on transient network errors so the
-agent loop (Phase 7.2) can focus on reasoning logic rather than API
-plumbing.
+sampling params, and retry logic so the agent loop (Phase 7.2) can
+focus on reasoning logic rather than API plumbing.
 
-Reference: Groq tool-use docs, https://console.groq.com/docs/tool-use
+Key rotation rationale: Groq's free tier enforces a 100K tokens/day
+limit per organization (per Groq's rate-limits docs). Since rate limits
+are per-org (not per-key), multiple keys from the *same* org don't help.
+But keys from *different* orgs each get their own 100K pool. This module
+cycles through a list of keys on TPD exhaustion, transparent to callers
+— the ReAct loop sees a single chat() function regardless of how many
+keys back it.
+
+Reference: Groq rate-limits docs, https://console.groq.com/docs/rate-limits
 """
 
 import logging
+import os
 import time
 from typing import Any, Optional
 
 from groq import Groq
-from groq import APIConnectionError, InternalServerError
+from groq import APIConnectionError, InternalServerError, RateLimitError
 
 from aml_agent.config import settings
 
@@ -22,14 +30,50 @@ from aml_agent.config import settings
 logger = logging.getLogger("aml_agent.agent.groq")
 
 
-def _client() -> Groq:
+class _KeyPool:
+    """Manages a pool of Groq API keys from different orgs.
+
+    Rotation policy: on RateLimitError, advance to the next key.
+    Once every key has been tried in a single chat() call, re-raise
+    so the caller (eval harness) can decide whether to sleep or abort.
     """
-    Instantiate the SDK client. The Groq SDK reads GROQ_API_KEY from env
-    by default, but we pass it explicitly so misconfigured .env files
-    surface as a config error at startup (via pydantic-settings) rather
-    than as a silent 401 at first request.
-    """
-    return Groq(api_key=settings.groq_api_key)
+
+    def __init__(self) -> None:
+        # GROQ_API_KEYS (comma-separated) takes precedence over the
+        # single-key settings.groq_api_key. This avoids touching
+        # config.py / pydantic-settings schema for what is a
+        # run-time-only eval concern, not a production config change.
+        raw = os.environ.get("GROQ_API_KEYS", "")
+        if raw.strip():
+            self._keys = [k.strip() for k in raw.split(",") if k.strip()]
+        else:
+            self._keys = [settings.groq_api_key]
+        self._index = 0
+        logger.info("Groq key pool initialised with %d key(s)", len(self._keys))
+
+    @property
+    def current_key(self) -> str:
+        return self._keys[self._index]
+
+    @property
+    def size(self) -> int:
+        return len(self._keys)
+
+    def rotate(self) -> str:
+        """Advance to the next key. Returns the new key."""
+        self._index = (self._index + 1) % len(self._keys)
+        return self._keys[self._index]
+
+
+# Module-level singleton — initialised once on first import.
+_pool = _KeyPool()
+
+
+def _client(api_key: str) -> Groq:
+    """Instantiate the SDK client with an explicit key so
+    misconfigured .env surfaces as a startup error (via
+    pydantic-settings) rather than a silent 401 at first request."""
+    return Groq(api_key=api_key)
 
 
 def chat(
@@ -39,20 +83,19 @@ def chat(
     response_format: Optional[dict[str, Any]] = None,
 ) -> Any:
     """
-    Send a chat completion request and return the raw SDK response.
+    Send a chat completion request, rotating keys on rate-limit errors.
 
-    Returns the SDK object directly (not a DTO) because the ReAct loop
-    (7.2) needs access to tool_calls, finish_reason, and message content
-    — wrapping it would just re-expose the same fields with more code.
+    Retry policy:
+      - Transient errors (connection reset, 5xx): one retry with a
+        2-second delay on the same key.
+      - RateLimitError (TPD/TPM exhaustion): rotate to the next key
+        and retry immediately. If all keys in the pool have been
+        tried, re-raise so the caller can sleep-and-retry.
 
-    Retry policy: one retry on transient errors (connection reset, 5xx).
-    The SDK already retries rate limits internally per Groq's own
-    guidance, so we only defend against network hiccups here. No
-    exponential backoff — at our request rate a fixed 2-second delay
-    handles the failure mode without adding complexity.
+    Returns the raw SDK response object (not a DTO) because the ReAct
+    loop needs access to tool_calls, finish_reason, usage, and message
+    content directly.
     """
-    client = _client()
-
     kwargs: dict[str, Any] = {
         "model": settings.groq_model_name,
         "messages": messages,
@@ -63,15 +106,45 @@ def chat(
         kwargs["tools"] = tools
         kwargs["tool_choice"] = tool_choice
     if response_format:
-        # JSON mode used for the final case file (7.4) to enforce a
-        # schema the guardrail layer accepts directly. Not set on
-        # tool-calling turns since Groq's function-calling and JSON
-        # mode are mutually exclusive.
         kwargs["response_format"] = response_format
 
-    try:
-        return client.chat.completions.create(**kwargs)
-    except (APIConnectionError, InternalServerError) as e:
-        logger.warning("Groq transient error, retrying once: %r", e)
-        time.sleep(2)
-        return client.chat.completions.create(**kwargs)
+    attempts = 0
+    last_error: Optional[Exception] = None
+
+    while attempts < _pool.size:
+        client = _client(_pool.current_key)
+        try:
+            return client.chat.completions.create(**kwargs)
+        except (APIConnectionError, InternalServerError) as e:
+            # Transient network/server error — one retry on same key.
+            logger.warning("Groq transient error, retrying once: %r", e)
+            time.sleep(2)
+            try:
+                return client.chat.completions.create(**kwargs)
+            except (APIConnectionError, InternalServerError):
+                # Second failure on same key — treat as exhausted,
+                # rotate rather than raising immediately.
+                last_error = e
+                attempts += 1
+                next_key = _pool.rotate()
+                logger.warning(
+                    "Transient error persisted, rotated to key %d/%d",
+                    attempts + 1, _pool.size,
+                )
+        except RateLimitError as e:
+            last_error = e
+            attempts += 1
+            if attempts < _pool.size:
+                next_key = _pool.rotate()
+                logger.warning(
+                    "Rate limit on key %d/%d, rotating to next key",
+                    attempts, _pool.size,
+                )
+            else:
+                # All keys exhausted — re-raise so the eval harness
+                # can parse retry-after and sleep.
+                logger.error("All %d keys exhausted", _pool.size)
+                raise
+
+    # Should only reach here if all keys hit transient errors.
+    raise last_error  # type: ignore[misc]

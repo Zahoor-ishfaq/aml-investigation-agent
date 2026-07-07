@@ -31,18 +31,36 @@ class Settings(BaseSettings):
     postgres_db: str
     postgres_host: str = "localhost"
     postgres_port: int = 5432
-    
-    # --- Groq ---
-    groq_api_key: str
+
+    # --- Groq (kept for fallback / future use) ---
+    groq_api_key: str = ""
     groq_model_name: str = "llama-3.3-70b-versatile"
     groq_temperature: float = 0.1
     groq_max_tokens: int = 2048
+
+    # --- Cerebras ---
+    cerebras_api_key: str = ""
+    cerebras_model_name: str = "llama-3.3-70b"
+    cerebras_temperature: float = 0.1
+    cerebras_max_tokens: int = 2048
+
+    # --- Claude ---
+    # Anthropic Messages API. $1/$5 per M tokens (Haiku 4.5).
+    # 30-alert eval run ≈ $0.50 well within $5 budget.
+    claude_api_key: str = ""
+    claude_model_name: str = "claude-haiku-4-5-20251001"
+    claude_temperature: float = 0.1
+    claude_max_tokens: int = 2048
+
+    # --- Gemini ---
+    # OpenAI-compatible gateway (https://ai.google.dev/gemini-api/docs/openai).
+    # Free tier: 15 RPM, 1,500 RPD, 1M TPM — no card, no expiration.
+    gemini_api_key: str = ""
+    gemini_model_name: str = "gemini-2.0-flash"
+    gemini_temperature: float = 0.1
+    gemini_max_tokens: int = 2048
+
     # --- AMLSim ---
-    # Path type gives startup validation: pydantic converts the string to a Path
-    # object and downstream code can .exists() / .iterdir() without re-parsing.
-    # We deliberately do NOT verify the directory exists here — that would
-    # couple config load to filesystem state and fail in test environments
-    # where AMLSim isn't installed. Ingestion script checks existence.
     amlsim_output_dir: Path
 
     model_config = SettingsConfigDict(

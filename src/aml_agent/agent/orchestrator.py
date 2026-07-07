@@ -54,6 +54,12 @@ class InvestigationOutcome:
     stopped_reason: str = ""                    # from InvestigationSession
     case_file_parse_ok: bool = False
     diagnostic: str = ""                        # human-readable summary of why we landed here
+    # Per-Groq-call token usage from the ReAct loop. Carried all the way
+    # out to the eval harness so cost-per-alert can be broken down by
+    # iteration rather than only seen as an opaque total — this is what
+    # lets us tell "resent history is dominating cost" apart from
+    # "one turn is unusually expensive" (e.g. an oversized tool result).
+    token_usage: list[dict[str, int]] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -193,6 +199,7 @@ def investigate_alert(db: Session, alert_id: int) -> InvestigationOutcome:
         stopped_reason=result.stopped_reason,
         case_file_parse_ok=True,
         diagnostic=f"agent proposed {decision.action.value}, guardrail {verdict.value}, applied {final_status}",
+        token_usage=result.token_usage,
     )
 
 
@@ -231,6 +238,11 @@ def _apply_forced_escalate(
         stopped_reason=result.stopped_reason,
         case_file_parse_ok=case_file_parse_ok,
         diagnostic=reason,
+        # Token usage is recorded even on the forced-escalate path —
+        # the Groq spend happened regardless of whether parsing
+        # succeeded, and the eval harness needs it to explain runs
+        # that burn budget without producing a usable decision.
+        token_usage=result.token_usage,
     )
 
 
