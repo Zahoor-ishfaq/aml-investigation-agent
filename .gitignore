@@ -49,5 +49,3 @@ chroma_db/
 .streamlit/secrets.toml
 
 knowledge_base/chroma/
-
-eval_results/

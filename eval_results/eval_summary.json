@@ -1,0 +1,34 @@
+{
+  "scored_at": "2026-07-07T18:46:27.704148+00:00",
+  "source_file": "eval_results\\agent_run_latest.json",
+  "sample_size": 30,
+  "detection": {
+    "tp": 20,
+    "fp": 10,
+    "fn": 0,
+    "tn": 0,
+    "precision": 0.6667,
+    "recall": 1.0,
+    "f1": 0.8,
+    "scored_count": 30
+  },
+  "quality": {
+    "parse_ok_rate": 1.0,
+    "complete_rate": 1.0,
+    "error_rate": 0.0,
+    "guardrail_pass_rate": 0.6667,
+    "guardrail_review_rate": 0.0,
+    "guardrail_block_rate": 0.3333
+  },
+  "cost": {
+    "total_tokens": 399674,
+    "mean_tokens_per_alert": 13322.5,
+    "max_tokens_alert": 20338,
+    "min_tokens_alert": 9689
+  },
+  "latency": {
+    "mean_sec": 15.1,
+    "max_sec": 24.15,
+    "min_sec": 10.13
+  }
+}

@@ -1,0 +1,858 @@
+{
+  "generated_at": "2026-07-07T14:43:45.643311+00:00",
+  "sample_size": 30,
+  "records": [
+    {
+      "alert_id": 8339,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 12.493727684020996,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2787,
+          "completion_tokens": 341,
+          "total_tokens": 3128
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5912,
+          "completion_tokens": 649,
+          "total_tokens": 6561
+        }
+      ],
+      "total_tokens": 9689
+    },
+    {
+      "alert_id": 2324,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 24.151607990264893,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2796,
+          "completion_tokens": 267,
+          "total_tokens": 3063
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5363,
+          "completion_tokens": 132,
+          "total_tokens": 5495
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 5975,
+          "completion_tokens": 708,
+          "total_tokens": 6683
+        }
+      ],
+      "total_tokens": 15241
+    },
+    {
+      "alert_id": 8267,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 15.662117958068848,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2783,
+          "completion_tokens": 350,
+          "total_tokens": 3133
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5939,
+          "completion_tokens": 706,
+          "total_tokens": 6645
+        }
+      ],
+      "total_tokens": 9778
+    },
+    {
+      "alert_id": 8305,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 22.962246894836426,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2804,
+          "completion_tokens": 259,
+          "total_tokens": 3063
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 4604,
+          "completion_tokens": 119,
+          "total_tokens": 4723
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 5684,
+          "completion_tokens": 652,
+          "total_tokens": 6336
+        }
+      ],
+      "total_tokens": 14122
+    },
+    {
+      "alert_id": 8374,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 17.053328275680542,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2808,
+          "completion_tokens": 370,
+          "total_tokens": 3178
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 8353,
+          "completion_tokens": 997,
+          "total_tokens": 9350
+        }
+      ],
+      "total_tokens": 12528
+    },
+    {
+      "alert_id": 8288,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.775345087051392,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2857,
+          "completion_tokens": 348,
+          "total_tokens": 3205
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 8116,
+          "completion_tokens": 717,
+          "total_tokens": 8833
+        }
+      ],
+      "total_tokens": 12038
+    },
+    {
+      "alert_id": 8293,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 18.628187894821167,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2829,
+          "completion_tokens": 349,
+          "total_tokens": 3178
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 14844,
+          "completion_tokens": 770,
+          "total_tokens": 15614
+        }
+      ],
+      "total_tokens": 18792
+    },
+    {
+      "alert_id": 8351,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 13.431147336959839,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2820,
+          "completion_tokens": 344,
+          "total_tokens": 3164
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7572,
+          "completion_tokens": 322,
+          "total_tokens": 7894
+        }
+      ],
+      "total_tokens": 11058
+    },
+    {
+      "alert_id": 8266,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 12.986311674118042,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2773,
+          "completion_tokens": 351,
+          "total_tokens": 3124
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5930,
+          "completion_tokens": 738,
+          "total_tokens": 6668
+        }
+      ],
+      "total_tokens": 9792
+    },
+    {
+      "alert_id": 8307,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.974923133850098,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2813,
+          "completion_tokens": 265,
+          "total_tokens": 3078
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 4685,
+          "completion_tokens": 118,
+          "total_tokens": 4803
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 5669,
+          "completion_tokens": 610,
+          "total_tokens": 6279
+        }
+      ],
+      "total_tokens": 14160
+    },
+    {
+      "alert_id": 8362,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 13.086722373962402,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2800,
+          "completion_tokens": 341,
+          "total_tokens": 3141
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 6535,
+          "completion_tokens": 683,
+          "total_tokens": 7218
+        }
+      ],
+      "total_tokens": 10359
+    },
+    {
+      "alert_id": 8273,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 13.603063344955444,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2795,
+          "completion_tokens": 355,
+          "total_tokens": 3150
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7030,
+          "completion_tokens": 639,
+          "total_tokens": 7669
+        }
+      ],
+      "total_tokens": 10819
+    },
+    {
+      "alert_id": 8331,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 16.8089120388031,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2797,
+          "completion_tokens": 291,
+          "total_tokens": 3088
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 8993,
+          "completion_tokens": 586,
+          "total_tokens": 9579
+        }
+      ],
+      "total_tokens": 12667
+    },
+    {
+      "alert_id": 8381,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.423516750335693,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2899,
+          "completion_tokens": 348,
+          "total_tokens": 3247
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7884,
+          "completion_tokens": 730,
+          "total_tokens": 8614
+        }
+      ],
+      "total_tokens": 11861
+    },
+    {
+      "alert_id": 8337,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 15.98867392539978,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2840,
+          "completion_tokens": 348,
+          "total_tokens": 3188
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 8162,
+          "completion_tokens": 708,
+          "total_tokens": 8870
+        }
+      ],
+      "total_tokens": 12058
+    },
+    {
+      "alert_id": 1697,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 11.319453477859497,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2896,
+          "completion_tokens": 346,
+          "total_tokens": 3242
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 6091,
+          "completion_tokens": 655,
+          "total_tokens": 6746
+        }
+      ],
+      "total_tokens": 9988
+    },
+    {
+      "alert_id": 8314,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 19.150115251541138,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2798,
+          "completion_tokens": 340,
+          "total_tokens": 3138
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5895,
+          "completion_tokens": 783,
+          "total_tokens": 6678
+        }
+      ],
+      "total_tokens": 9816
+    },
+    {
+      "alert_id": 8378,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 11.877338409423828,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2798,
+          "completion_tokens": 256,
+          "total_tokens": 3054
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 5579,
+          "completion_tokens": 117,
+          "total_tokens": 5696
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 6373,
+          "completion_tokens": 355,
+          "total_tokens": 6728
+        }
+      ],
+      "total_tokens": 15478
+    },
+    {
+      "alert_id": 8358,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 16.883888006210327,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2795,
+          "completion_tokens": 346,
+          "total_tokens": 3141
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 6535,
+          "completion_tokens": 586,
+          "total_tokens": 7121
+        }
+      ],
+      "total_tokens": 10262
+    },
+    {
+      "alert_id": 8320,
+      "ground_truth_laundering": true,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 12.930890321731567,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2834,
+          "completion_tokens": 340,
+          "total_tokens": 3174
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 14657,
+          "completion_tokens": 632,
+          "total_tokens": 15289
+        }
+      ],
+      "total_tokens": 18463
+    },
+    {
+      "alert_id": 8453,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "block",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 13.799481630325317,
+      "diagnostic": "agent proposed escalate, guardrail block, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2812,
+          "completion_tokens": 351,
+          "total_tokens": 3163
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7985,
+          "completion_tokens": 668,
+          "total_tokens": 8653
+        }
+      ],
+      "total_tokens": 11816
+    },
+    {
+      "alert_id": 8449,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 13.945166110992432,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2708,
+          "completion_tokens": 347,
+          "total_tokens": 3055
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 10374,
+          "completion_tokens": 577,
+          "total_tokens": 10951
+        }
+      ],
+      "total_tokens": 14006
+    },
+    {
+      "alert_id": 8468,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 15.744132995605469,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2708,
+          "completion_tokens": 354,
+          "total_tokens": 3062
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7714,
+          "completion_tokens": 565,
+          "total_tokens": 8279
+        }
+      ],
+      "total_tokens": 11341
+    },
+    {
+      "alert_id": 8459,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 12.282172203063965,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2708,
+          "completion_tokens": 343,
+          "total_tokens": 3051
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 9106,
+          "completion_tokens": 669,
+          "total_tokens": 9775
+        }
+      ],
+      "total_tokens": 12826
+    },
+    {
+      "alert_id": 8391,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 10.13269305229187,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2707,
+          "completion_tokens": 343,
+          "total_tokens": 3050
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 9105,
+          "completion_tokens": 474,
+          "total_tokens": 9579
+        }
+      ],
+      "total_tokens": 12629
+    },
+    {
+      "alert_id": 8433,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 15.335742950439453,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2707,
+          "completion_tokens": 257,
+          "total_tokens": 2964
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7011,
+          "completion_tokens": 119,
+          "total_tokens": 7130
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 9670,
+          "completion_tokens": 563,
+          "total_tokens": 10233
+        }
+      ],
+      "total_tokens": 20327
+    },
+    {
+      "alert_id": 8447,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.295989513397217,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2707,
+          "completion_tokens": 347,
+          "total_tokens": 3054
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 10373,
+          "completion_tokens": 645,
+          "total_tokens": 11018
+        }
+      ],
+      "total_tokens": 14072
+    },
+    {
+      "alert_id": 8428,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.93494725227356,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2708,
+          "completion_tokens": 257,
+          "total_tokens": 2965
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7012,
+          "completion_tokens": 120,
+          "total_tokens": 7132
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 9672,
+          "completion_tokens": 569,
+          "total_tokens": 10241
+        }
+      ],
+      "total_tokens": 20338
+    },
+    {
+      "alert_id": 8403,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 15.027990818023682,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2707,
+          "completion_tokens": 260,
+          "total_tokens": 2967
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 7050,
+          "completion_tokens": 120,
+          "total_tokens": 7170
+        },
+        {
+          "iteration": 3,
+          "prompt_tokens": 8520,
+          "completion_tokens": 564,
+          "total_tokens": 9084
+        }
+      ],
+      "total_tokens": 19221
+    },
+    {
+      "alert_id": 8448,
+      "ground_truth_laundering": false,
+      "applied_status": "escalated",
+      "agent_action": "escalate",
+      "guardrail_verdict": "pass",
+      "stopped_reason": "complete",
+      "case_file_parse_ok": true,
+      "tool_call_count": 4,
+      "elapsed_sec": 14.185373306274414,
+      "diagnostic": "agent proposed escalate, guardrail pass, applied escalated",
+      "token_usage": [
+        {
+          "iteration": 1,
+          "prompt_tokens": 2709,
+          "completion_tokens": 347,
+          "total_tokens": 3056
+        },
+        {
+          "iteration": 2,
+          "prompt_tokens": 10375,
+          "completion_tokens": 698,
+          "total_tokens": 11073
+        }
+      ],
+      "total_tokens": 14129
+    }
+  ]
+}
